@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- base href="http://cookieoverflow.com/using-scout-to-monitor-windows" --><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style><script src="using-scout-to-monitor-windows_files/commonutilstats.js" charset="UTF-8" type="text/javascript"></script><script src="using-scout-to-monitor-windows_files/AuthenticationService.Authenticate" charset="UTF-8" type="text/javascript"></script></head><body data-twttr-rendered="true"><div style="background:#fff;border:1px solid #999;margin:-1px -1px 0;padding:0;"><div style="background:#ddd;border:1px solid #999;color:#000;font:13px arial,sans-serif;font-weight:normal;margin:12px;padding:8px;text-align:left">This is Google's cache of <a href="http://cookieoverflow.com/using-scout-to-monitor-windows" style="text-decoration:underline;color:#00c">http://cookieoverflow.com/using-scout-to-monitor-windows</a>. It is a snapshot of the page as it appeared on Mar 29, 2013 09:04:08 GMT. The <a href="http://cookieoverflow.com/using-scout-to-monitor-windows" style="text-decoration:underline;color:#00c">current page</a> could have changed in the meantime. <a href="http://support.google.com/websearch/bin/answer.py?hl=en&amp;p=cached&amp;answer=1687222" style="text-decoration:underline;color:#00c">Learn more</a><br>Tip: To quickly find your search term on this page, press <b>Ctrl+F</b> or <b>⌘-F</b> (Mac) and use the find bar.<br><br><div style="float:right"><a href="http://webcache.googleusercontent.com/search?q=cache:YUJ1DiahVIMJ:cookieoverflow.com/using-scout-to-monitor-windows&amp;client=ubuntu&amp;hl=en&amp;gl=us&amp;strip=1" style="text-decoration:underline;color:#00c">Text-only version</a></div>
+<div>&nbsp;</div></div></div><div style="position:relative">
+
+
+
+      <meta http-equiv="X-UA-Compatible" content="chrome=1">
+      <meta name="width" content="500">
+      <meta name="generator" content="Posterous">
+      <script src="using-scout-to-monitor-windows_files/modernizr.js" type="text/javascript"></script>
+      <!--[if lt IE 9]>
+        <script src="/javascripts/innershiv.js?1363729396" type="text/javascript"></script>
+      <![endif]-->
+      <link href="using-scout-to-monitor-windows_files/posts.css" media="screen" rel="stylesheet" type="text/css">
+      <!--[if lt IE 9]>
+        <link href="/bundles/ie.css" media="screen" rel="stylesheet" type="text/css" />
+      <![endif]-->
+      <link rel="alternate" type="application/rss+xml" href="http://cookieoverflow.com/rss.xml">
+      <meta name="medium" content="blog"><link rel="image_src" href="using-scout-to-monitor-windows_files/photo_large_high.jpg">
+      <script type="text/javascript">
+//<![CDATA[
+window._token = 'kxo6uNATlzOQhuTK/gyRjv7FQExTzZmGt19HQ7PQaRE='; beforeload = (new Date()).getTime(); pagetype = 'show';
+//]]>
+</script>
+      <script src="using-scout-to-monitor-windows_files/sites_initialization.js" type="text/javascript"></script>
+      <script type="text/javascript">
+//<![CDATA[
+var $j = jQuery.noConflict();
+//]]>
+</script>
+      <script type="text/javascript">
+//<![CDATA[
+var POSTEROUS_HOSTNAME = 'posterous.com'
+//]]>
+</script>
+      <script data-post-data="%7B%22post_id%22%3A38767381%2C%22post_is_private%22%3Afalse%2C%22post_url_slug%22%3A%22using-scout-to-monitor-windows%22%2C%22user_id%22%3A180651%7D" data-posterous-deferred-content-url="http://cookieoverflow.com/posts/deferred_content.jsonp" data-posts-data="%5B%7B%22post_id%22%3A38767381%2C%22post_is_private%22%3Afalse%2C%22post_url_slug%22%3A%22using-scout-to-monitor-windows%22%2C%22user_id%22%3A180651%7D%5D" id="posterous_initialization_script" src="using-scout-to-monitor-windows_files/initialize.js" type="text/javascript"></script>
+      
+    <script src="using-scout-to-monitor-windows_files/syntaxhighlighter.js" type="text/javascript"></script><link data-posterous-parse-code="true" href="using-scout-to-monitor-windows_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css"><script src="using-scout-to-monitor-windows_files/tags.js" type="text/javascript"></script><link rel="canonical" href="http://cookieoverflow.com/using-scout-to-monitor-windows">
+    <meta charset="utf-8">
+    <link href="http://cookieoverflow.com/images/favicon.png" rel="icon" type="image/x-png">
+    <title>Using Scout to Monitor Windows - Cookie Overflow</title>
+      
+      
+
+
+
+
+
+
+<style type="text/css">
+
+
+* {padding:0;margin:0;}
+img {border:0;}
+.clear {clear:both;font-size:5px;}
+.left {float:left;}
+.right {float:right;}
+.text-right {text-align:right;}
+.center {text-align:center;}
+.small {font-size:.857em !important;} /* 12px */
+.xsmall {font-size:.786em !important;} /* 11px */
+.xxsmall {font-size:9px;}
+.normal {font-size:12px !important;}
+.big {font-size:14px !important;}
+.bigger {font-size:16px !important;}
+.black {color:#000;}
+.green1,.green1:hover {color:#7ba709;}
+.green2,.green2:hover {color:#6f9904;}
+.darkgray {color:#333;}
+.strong {font-weight:bold;}
+.absolute-right {position:absolute;top:0;right:0;}
+.white {color:#fff;}
+.red {color:#f00;}
+
+header,hgroup,footer,aside,nav,article,section {display:block;}
+
+body {
+    background:#F3F3F3;
+    color:#333;
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size:.875em; /* 14px */
+}
+
+a {
+    color:#000;
+    text-decoration:underline;
+}
+
+.container {
+    background:#fff;
+    border:solid 1px #ddd;
+    margin:50px auto 100px;
+    padding:30px 40px;
+    position:relative;
+    width:800px;
+}
+
+    article header h1 {
+        font-size:1.714em;
+        font-weight:normal;
+        text-align:center;
+    }
+
+        article header h1 a {
+            color:#58574E;
+            text-decoration:none;
+        }
+        
+        article header h1 a:hover {
+        }
+
+header#page_header {
+    border-bottom:solid 2px #58574E;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+header#page_header hgroup {
+    padding:10px 0;
+}
+
+    header#page_header hgroup h1 {
+        font-size:2.143em;
+        font-weight:normal;
+        line-height:1em;
+    }
+
+        header#page_header hgroup h1 a {
+            color:#000;
+            text-decoration:none;
+        }
+
+    header#page_header hgroup h2 {
+        color:#58574E;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:.857em;
+        font-weight:normal;
+        margin-top:10px;
+    }
+
+.header_image {
+    padding-bottom:20px;
+}
+
+
+nav#navigation {
+    padding:0 0 20px;
+}
+
+    nav#navigation li {
+        display:inline-block;
+        font-family:Arial, Helvetica, sans-serif;
+        list-style:none;
+        padding:10px 15px;
+    }
+    
+        nav#navigation li a {
+            color:#000;
+            text-decoration:none;
+        }
+        
+        nav#navigation li a:hover {
+            text-decoration:underline;
+        }
+
+nav#navigation ul li a.current {
+    font-weight:bold;
+}
+
+
+form.search input.text {
+    font-size: 12px;
+    padding: 2px 2px 2px 20px;
+    border: 1px solid #ccc;
+    background:#fff url('/images/icons/search16.png') no-repeat 3px 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+aside#sidebar {
+    border-top:solid 2px #58574E;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:.857em;
+    margin-top:20px;
+    padding-top:20px;
+}
+
+    aside#sidebar a {
+        color:#000;
+        text-decoration:none;
+    }
+    
+    aside#sidebar a:hover {
+        text-decoration:underline;
+    }
+    
+aside#sidebar .column {
+    float:left;
+    padding-right:25px;
+    width:250px;
+}
+
+aside#sidebar section {
+    display:block;
+    padding:15px 0;
+}
+
+    aside section#profile {
+    }
+
+    aside#sidebar section h1 {
+        color:#000;
+        font-size:1.143em;
+    }
+    
+    aside#sidebar section ul li {
+        list-style: none;
+        line-height:1.2em;
+    }
+    
+    aside#sidebar section div.archive_list {
+      line-height:1.2em;      
+    }
+    
+    aside#sidebar section div.archive_list div.archive {
+        margin-bottom:5px; 
+        margin-top:5px;       
+    }
+    
+    aside#sidebar section div.archive_list div.inner {
+      margin-left:10px;
+      line-height:1.5em;
+    }
+    
+    .profile_image {
+        background:#fff;
+        border:solid 1px #797878;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        -moz-box-shadow:0 0 3px rgba(0,0,0,.3);
+        -webkit-box-shadow:0 0 3px rgba(0,0,0,.3);
+        box-shadow:0 0 3px rgba(0,0,0,.3);
+        margin-bottom:10px;
+        padding:5px;
+    }
+    
+    .profile p {
+        line-height:1.5em;
+        padding-top:5px;
+    }
+    
+    .external {
+        padding-top:5px;
+    }
+
+#search {
+    padding:15px 0;
+}
+
+    #searchbox {
+        background:url(/themes/journal/search-black-50.png) no-repeat 7px 7px;
+        border:solid 1px #ebebeb;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        color:#333;
+        font-size:14px;
+        padding:3px 5px 3px 23px;
+        width:165px;
+    }
+    
+    #searchbox_button {
+        font-size:.875em;
+        font-weight:bold;
+        height:auto;
+        margin-top:5px;
+        padding:3px 10px;
+    }
+
+section#search_results {
+    padding:15px 150px;
+    margin-bottom:50px;
+    text-align:center;
+    width:500px;
+}
+
+    section#search_results a {
+        text-decoration:none;
+    }
+    
+    section#search_results a:hover {
+        text-decoration:underline;
+    }
+
+    section#search_results .submit {
+        font-size:.875em;
+        font-weight:bold;
+        height:auto;
+        margin-top:5px;
+        padding:3px 10px;
+    }
+
+    section#search_results h1,section#filed_under h1 {
+        color:#000;
+        font-weight:normal;
+        font-size:1.714em;
+        line-height:1em;
+        margin-bottom:15px;
+        padding-bottom:15px;
+        text-align:center;
+    }
+    
+    section#search_results h1 {
+        border-bottom:solid 1px #ebebeb;
+    }
+    
+    section#filed_under {
+        padding:15px 150px;
+    }
+    
+    section#filed_under h1 {
+        font-size:1em;
+        margin-bottom:25px;
+        width:500px;
+    }
+    
+    section#search_results ul {}
+        
+        section#search_results li {
+            display:inline-block;
+            font-size:.786em;
+            list-style:none;
+            margin-right:5px;
+        }
+        
+    .back_to_blog {
+        display:block;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:bold;
+        padding:15px 150px;
+        width:500px;
+    }
+        
+        .back_to_blog a {
+            text-decoration:none;
+        }
+
+.cw {
+    bottom:-50px;
+    color:#333 !important;
+    font-size:1.143em;
+    position:absolute;
+    text-align:center;
+    width:800px;
+}
+
+    .cw a {
+        color:#000 !important;
+        text-decoration:none;
+    }
+    
+        .cw a:hover {
+            text-decoration:underline;
+        }
+        
+.profile-link {
+    color:#000 !important;
+    font-size:1em;
+}
+
+section#contributors li a:first-child {
+padding-right:3px;
+text-decoration:none;
+}
+
+    section#contributors li a img {
+        background:#fff;
+        border:solid 1px #797878;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        -moz-box-shadow:0 0 3px rgba(0,0,0,.3);
+        -webkit-box-shadow:0 0 3px rgba(0,0,0,.3);
+        box-shadow:0 0 3px rgba(0,0,0,.3);
+        height:20px;
+        padding:2px;
+        vertical-align:middle;
+        width:20px;
+    }
+    
+    section#contributors li a {
+        vertical-align:middle;
+    }
+
+    section#subscriptions {
+        padding-bottom:3px !important;   
+    }
+
+        section#subscriptions h1 {
+            padding-bottom:5px;
+        }
+
+    section#rss {
+        padding-top:3px !important;
+    }
+
+    section#subscriptions a {
+        height:14px;
+    }
+
+    section#rss a {
+        display:block;
+        height:14px;
+        padding-left:18px;
+    }
+
+    section#subscriptions .subscribe-site {
+        background:url(/images/favicon.png) no-repeat -1px -1px;
+    }
+
+    section#subscriptions .subscribe-site div {
+        padding-left:18px;
+    }
+
+    section#rss a {
+        background:url(/images/feed-icon-14x14.png) no-repeat -1px -1px;
+    }
+
+section#statistics {
+}
+
+    section#statistics a {
+        text-decoration:none;
+    }
+
+    section#statistics a:hover {
+        text-decoration:underline;
+    }
+
+section#statistics strong {
+}
+
+section#tags li.selected a {
+    font-weight:bold;
+}
+
+    section#tags li.selected a:hover {
+        cursor:pointer;
+    }
+    
+section#fans {
+}
+
+    section#fans h1 {
+        font-size:.786em;
+    }
+
+    section#fans li {
+        list-style:none;
+    }
+
+        section#fans li a img {
+            background:#fff;
+            border:solid 1px #797878;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-box-shadow:0 0 3px rgba(0,0,0,.3);
+            -webkit-box-shadow:0 0 3px rgba(0,0,0,.3);
+            box-shadow:0 0 3px rgba(0,0,0,.3);
+            height:20px;
+            padding:2px;
+            vertical-align:middle;
+            width:20px;
+        }
+        
+        section#fans li a {
+            color:#58574E;
+            font-size:.786em;
+            text-decoration:none;
+            vertical-align:middle;
+        }
+
+
+article header aside.sms {
+    font-size: 11px;
+}
+
+footer section.locations h1 {
+    font-weight: normal;
+    line-height: 21px;
+    margin-top: 0px;
+}
+
+input, select, textarea {
+    font-size: 1.6em;
+    line-height:1.3em !important;
+    padding: 5px;
+}
+
+input[type='text'], input[type='password'], select, textarea {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+input[type='button'], input[type='submit'] {
+    height: 2em;
+    font-size: 1.4em;
+    color: #000;
+    margin-top: 10px;
+}
+
+section.share {
+    margin-bottom: 18px;
+}
+
+#post_column {
+    width:800px;
+}
+        
+        #post_column .body a {
+            color:#000;
+        }
+        
+        #post_column a:hover {
+        }
+
+    div#articles {
+    }
+    
+        article {
+            margin-bottom:45px;
+            position:relative;
+        }
+        
+            article header {
+                border-bottom:solid 1px #ebebeb;
+                padding:15px 150px;
+                width:500px;
+            }
+            
+            article header section {
+                min-height:40px;
+                padding-top:17px;
+            }
+            
+            article header aside.sms {
+                float:left;
+                padding-top:10px;
+            }
+        
+        div.editbox {
+            height:16px;
+            position:absolute;
+            visibility:hidden;
+        }
+        
+            div.editbox ul.mini_commands {
+                margin-top:0;
+            }
+            
+                ul.mini_commands li a {
+                    color:#000;
+                }
+            
+            article:hover div.editbox {
+                visibility:visible;
+            }
+            
+        article div.body {
+            padding:15px 150px;
+            width:500px;
+        }
+        
+            article div.body div.inner {
+                line-height:2em;
+            }
+            
+                article div.body div.inner > :first-child {
+                    margin-bottom:0;
+                    margin-top:0;
+                }
+                
+                article div.body div.inner > p:first-child {
+                    /* margin-top:15px; */
+                }
+                
+                article div.body p, article div.body blockquote {
+                    margin:15px 0 18px;
+                }
+                
+                article div.body div.posterousGalleryMainDiv {
+                    margin:0 0 15px;
+                }
+                
+                div.posterousVideoMainDiv {
+                    margin:0;
+                }
+                
+                .posterousGalleryMainDiv a.posterousGalleryMainlink {
+                    text-decoration:none !important;
+                }
+                
+                article div.body div.inner a {
+                    text-decoration:underline;
+                }
+                
+                    article div.body div.inner a:hover {
+                    }
+                    
+                    article div.body div.inner ul,article div.body div.inner ol {
+                        padding-bottom:5px;
+                        padding-left:30px;
+                    }
+                
+                .galleryLabel {
+                    color:#333;
+                }
+                    
+                .inner blockquote {
+                    border-left:solid 4px #eee !important;
+                }
+                
+        article footer {
+            border-top:solid 1px #ebebeb;
+            font-family:"Times New Roman", Times, serif;
+            padding:15px 150px;
+            position:relative;
+            width:500px;
+        }
+
+            footer section {
+                margin-bottom:10px;
+            }
+            
+                footer section.author {
+                    color:#58574E;
+                    padding-bottom:10px;
+                }
+                
+                    footer section.author a {
+                        color:#58574E !important;
+                    }
+                
+                    footer section.author h1 {
+                        display:inline;
+                        font-size:1em;
+                        font-weight:normal;
+                    }
+
+         h1.comment-link {
+            font-size:1em;
+            font-weight:normal;
+        }
+        
+            h1.comment-link a {
+                text-decoration:none;
+            }
+            
+            h1.comment-link a:hover {
+                text-decoration:underline;
+            }
+                    
+        footer section.comments_box {
+            margin-top:15px;
+        }
+
+            footer section.comments h1 {
+                font-size:.857em;
+                font-weight:normal;
+            }
+            
+                footer section.comments h1 a {
+                    text-decoration:none;
+                }
+            
+            div.comment_none_yet_msg {
+                font-style:italic;
+                font-weight:normal;
+                margin-top:5px;
+            }
+            
+                div.comment_none_yet_msg,div.commentunit {
+                    color:#333;
+                }
+            
+            .commentunit .comment_value label {
+                color:#333 !important;
+            }
+            
+            footer section.comments section h1 {
+                font-size:1em;
+                font-weight:bold;
+            }
+            div.comment {
+            }
+            
+            div.comment b {
+                font-weight:normal;
+            }
+
+
+            div.comment_label {
+                padding-top: 2px;
+                margin-top: 0px;
+            }
+            
+            
+            div.comment_date {
+            }
+            
+            div.commentunit {
+                /* margin: 10px 0px; */
+            }
+            
+            .comment_profile_description {
+                font-weight:bold;
+            }
+            
+                .comment_profile_description div {
+                    font-weight:normal;
+                }
+            
+            div.comment_value {
+            }
+
+            div.comment_avatar {
+                margin-top:10px;
+            }
+
+            div.commentunit div.profile_icon {
+                margin-top:5px;
+            }
+
+            div.commentname {
+                margin-bottom:5px;
+            }
+
+            div.comment_loading_div {
+            /* margin-left:155px; */
+            }
+            
+            div.comment_area {
+                clear:left;
+                float:left;
+            }
+                
+                footer section.comments h4 {
+                }
+                
+                .comment_value input[type="submit"] {
+                    font-size:.875em;
+                    font-weight:bold;
+                    height:auto;
+                    margin-top:5px;
+                    padding:3px 10px;
+                }
+
+                footer section .comment_loading_div {
+                    margin-top:5px;
+                }
+                
+                    footer section .comment_loading_div img {
+                        display:none;
+                    }
+
+div.posterous_comments h4, div.spanningheader h4 {
+    margin:0;
+}
+
+.posterous_comments {
+    font-family:Georgia, "Times New Roman", Times, serif;
+}
+
+article footer time div {display:inline;}
+
+footer section.tags {
+    color:#58574E;
+    font-size:.786em;
+    padding-bottom:10px;
+}
+    
+    footer section.tags a {
+        color:#58574E !important;
+    }
+
+    footer section.tags h1 {
+        display:inline;
+        font-size:11px;
+        margin:0;
+        padding-right:5px;
+    }
+    
+    footer section.tags h1 span {
+        font-weight:normal;
+    }
+    
+    footer section.tags ul {
+        display:inline;
+        margin:0;
+    }
+    
+    footer section.tags ul li {
+        display:inline;
+        list-style:none outside none;
+        padding-right:10px;
+    }
+    
+    footer section.tags ul li a {
+        color:#000;
+    }
+    
+    footer section.locations {
+        margin-top:10px;
+        margin-bottom:0;
+    }
+    
+    footer section.locations h2 {
+        font-size:11px;
+        margin-top:0;
+    }
+    
+    footer section.locations ul {
+        display:block;
+        margin:0;
+    }
+    
+    footer section.locations ul li {
+        display:block;
+        list-style:none outside none;
+    }
+    
+    footer section.locations div.location_detail {
+        background:#fbfbfb;
+        border-top:solid 2px #ebebeb;
+        border-bottom:solid 2px #ebebeb;
+        margin:10px 0;
+        overflow:auto;
+        padding:8px;
+    }
+    
+    footer section.locations div.location_detail div.map {
+        float:left;
+        height:150px;
+        width:300px;
+    }
+    
+    footer section.locations div.location_detail div.summary {
+        float:right;
+        width:172px;
+    }
+    
+    footer section.share, footer section.tags, footer section.locations {
+        display:block;
+        /* margin-left:155px; */
+    }
+
+footer#pagination {
+    font-family:Arial, Helvetica, sans-serif;
+    /* margin-left:155px; */
+    overflow:hidden;
+    padding-bottom:50px;
+}
+
+    .pagination {
+        margin:3px;
+        padding:3px;
+        text-align:center;
+    }
+
+    .pagination a {
+        color:#58574E;
+        margin:2px 0;
+        padding:5px 10px;
+        text-decoration:none;
+    }
+    
+    .pagination span.disabled {
+        color:#ccc;
+        margin:2px;
+        padding:2px 5px;
+    }
+    
+    .pagination a:hover, .pagination a:active {
+        background:#ccc;
+        color:#000;
+    }
+    
+    .pagination span.current {
+        color:#000;
+        font-weight:bold;
+        padding:2px 5px;
+        margin:2px;
+    }
+
+footer section.share {
+height:25px;
+}
+
+/* misc */
+
+div.ajaxResult {
+color:#009900;
+font-size:10px;
+margin-bottom:10px;
+}
+
+    div.retweet {
+    background:url("/images/icons/services/twitter11.png") no-repeat scroll left center transparent;
+    display:inline-block;
+    min-height:11px;
+    min-width:1px;
+    padding-left:15px;
+    vertical-align:middle;
+    }
+    
+    .twitter-share-button {
+    float:left;
+    }
+    
+    div.facebook_like {
+    display:inline;
+    float:left;
+    margin-left:5px;
+    position:relative;
+    }
+
+table {
+border:medium none;
+border-spacing:0;
+font-size:11px;
+line-height:16px;
+margin:10px 0 0;
+text-align:left;
+}
+
+    td {
+    border-color:-moz-use-text-color -moz-use-text-color #EEEEEE;
+    border-style:none none solid;
+    border-width:medium medium 1px;
+    margin:0;
+    padding:4px;
+    vertical-align:top;
+    }
+    
+    th {
+    border-color:-moz-use-text-color -moz-use-text-color #CCCCCC;
+    border-style:none none solid;
+    border-width:medium medium 1px;
+    font-weight:bold;
+    padding:4px;
+    text-align:left;
+    vertical-align:bottom;
+    }
+
+hr {
+border:1px solid #DDDDDD;
+margin-bottom:10px;
+margin-top:10px;
+}
+
+div.posterousListComments div.comment, div.posterousAddNewComment div.comment, div.posterousAddNewComment div.comment_value {
+/* margin-left:25px; */
+}
+
+section.private {
+    left:-25px;
+    position:absolute;
+    top:22px;
+}
+
+    article header section.private {
+        min-height:0; /* overwrite default */
+        padding-top:0; /* overwrite default */
+    }
+    
+    section.private:hover div.private_post_message {
+    display:block;
+    }
+    div.private_post_message {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    border: solid 1px rgba(0,0,0,.75);
+    background:rgba(0,0,0,.25);
+    color:#fff;
+    display:none;
+    padding:10px;
+    position:absolute;
+    right:-5px;
+    text-align:left;
+    top:-5px;
+    width:100px;
+    }
+    div.private_post_message h1 {
+    float:none;
+    font-size:11px;
+    margin:0 0 5px;
+    padding:0;
+    width:auto;
+    }
+    div.private_post_message p {
+    font-size:10px;
+    margin:0;
+    }
+    
+    div.posterous_retweet_widget {
+    margin:0 0 10px;
+    }
+
+</style>
+
+
+<div class="posterous_site_data" data-post-id="38767381" data-posterous-hostname="posterous.com" data-show-type="post" data-site-id="2164341" data-site-is-private="false" data-site-location="false" data-site-type="posterous" data-slug-id="using-scout-to-monitor-windows" data-user-id="180651"></div><div class="posterous_ojs" data-posterous-admin-box="true"></div><div class="posterousPrivateBox">
+	
+	
+</div>
+      <div class=" fb_reset" id="fb-root"><script async="" src="using-scout-to-monitor-windows_files/all.js" type="text/javascript"></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="using-scout-to-monitor-windows_files/xd_arbiter.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0" scrolling="no"></iframe><iframe src="using-scout-to-monitor-windows_files/xd_arbiter_002.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="using-scout-to-monitor-windows_files/oauth.html" style="display: none;" allowtransparency="true" name="f2b744bee5036ba" frameborder="0" scrolling="no"></iframe></div></div></div>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId  : '6694405826',
+              status : true, // check login status
+              cookie : true, // enable cookies to allow the server to access the session
+              xfbml  : true, // parse XFBML
+              oauth  : true
+
+            });
+            
+          };
+
+          (function() {
+            var e = document.createElement('script');
+            e.type = 'text/javascript';
+            e.src = 'http://connect.facebook.net/en_US/all.js';
+            e.async = true;
+            document.getElementById('fb-root').appendChild(e);
+          }());
+        </script>
+    
+<div id="pbar">
+        				<noscript>
+  <div id="posterousbar_nojs">
+    <a href="http://posterous.com/"><img src="/images/header/yellow.png" alt="Posterous" /></a>
+  </div>
+</noscript>
+              </div>
+<div class="container">
+
+    <div class="cw"><a href="http://themes.watilo.com/" target="_blank">Posterous theme</a> by <a href="http://watilo.com/" target="_blank">Cory Watilo</a><img src="using-scout-to-monitor-windows_files/a.gif"></div>
+    
+    <header id="page_header">
+        
+            <hgroup>
+                <h1><a href="http://cookieoverflow.com/" title="Cookie Overflow" rel="index">Cookie Overflow</a></h1>
+                
+                    <h2></h2>
+                
+            </hgroup>
+        
+        
+    </header>
+
+
+    <div id="post_column">
+        
+            
+                <section class="back_to_blog" id="extra_links">
+                    <a href="http://cookieoverflow.com/" rel="up">← Back to blog</a>
+                </section>
+            
+        
+            
+        
+        
+        
+        
+        
+      <div id="articles">
+        
+          <article class="post clearfix" id="post_38767381">
+            <header>
+                
+                
+                    <h1><a href="http://cookieoverflow.com/using-scout-to-monitor-windows">Using Scout to Monitor Windows</a></h1>
+                
+                
+      	        
+            
+              <div class="editbox">
+                
+        				
+                  
+                  <ul class="mini_commands posterous_edit_box posterous_edit_box_hidden" data-posterous-edit-box="true" data-posterous-post-id="38767381">
+	
+	<li><a href="http://posterous.com/posts/edit/38767381">Edit</a></li>
+  <li><a href="http://cookieoverflow.com/posts/destroy/38767381" onclick="if (confirm('Are you sure you want to delete this post?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);var s = document.createElement('input'); s.setAttribute('type', 'hidden'); s.setAttribute('name', 'authenticity_token'); s.setAttribute('value', 'kxo6uNATlzOQhuTK/gyRjv7FQExTzZmGt19HQ7PQaRE='); f.appendChild(s);f.submit(); };return false;">Delete</a></li>
+	<li><a href="http://posterous.com/posts/38767381/tags/edit_multiple" data-post-id="38767381" data-posterous-modal="true" data-posterous-tag-form="true">Tags</a></li>
+	
+	  <li><a href="http://posterous.com/autopost/crosspost?post_id=38767381" data-posterous-modal="true">Autopost</a>
+	
+</li></ul>
+
+                
+                
+              
+              </div>
+
+            </header>
+            <div class="body">
+              <div class="inner">
+                <p><strong>Problem</strong></p>
+<p>Monitoring a Windows server.</p>
+<p><strong>Background</strong></p>
+<p>As I mentioned <a href="http://cookieoverflow.com/red-windows" target="_blank">before</a>, I am responsible for interfacing with a process that has to run on a Windows server.</p>
+<p>It has been a been a bit of a pain to monitor. &nbsp;We are currently using <a href="http://scoutapp.com/" target="_blank">Scout</a>&nbsp;to
+ monitor our Linux servers, and while I didn't see any indicator that 
+Scout could monitor a Windows server, I didn't see any reason that it 
+couldn't. &nbsp;Clearly, using Scout to monitor this Windows box would 
+make it easier to have data consolidated in one place, and we wanted to 
+leverage the alerts and notifications in Scout to let us know when our 
+Windows box may be in need of attention.</p>
+<p><strong>Solution</strong></p>
+<p>Scout works on Windows! &nbsp;We have been using Scout to monitor our
+ Windows server for a few months now, and it has worked flawlessly.</p>
+<p><strong>How To</strong></p>
+<p><em>Configure the Windows Server:</em></p>
+<p>To run Scout on Windows, you will first need to have <a href="http://rubygems.org/pages/download" target="_blank">RubyGems</a>&nbsp;installed and then <a href="http://scoutapp.com/info/support" target="_blank">install the Scout gem</a>
+ on the Windows server. &nbsp;Installing the Scout gem works just like 
+any other gem install. &nbsp;After the install, there is one setup step 
+to ensure that this server can report to your Scout account.</p>
+<p></p><div class="dp-highlighter nogutter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>$&nbsp;gem&nbsp;install&nbsp;scout&nbsp;&nbsp;</span></span></li><li class=""><span>$&nbsp;scout&nbsp;(enter&nbsp;scout&nbsp;key&nbsp;at&nbsp;prompt)&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" language="code"> $ gem install scout
+ $ scout (enter scout key at prompt)
+ </pre><p></p>
+<p>Now the Scout agent is installed on your Windows server. &nbsp;You 
+need to ensure that it is invoked regularly so that it can report data 
+back to Scout. &nbsp;Unfortunately, we don't have cron to use, and so we
+ are left with "Scheduled Tasks". &nbsp;You can find it here: Start 
+-&gt; All Programs -&gt; Accessories -&gt; System Tools -&gt; Scheduled 
+Tasks. &nbsp;Create a new scheduled task (File -&gt; New) named "Scout".
+ &nbsp;On the "Task" configuration tab under "Run:" you want to put the 
+path to the scout agent followed by a space and then your scout key. 
+&nbsp;</p>
+<p>Scheduling things in Windows to run more than once a day is not very 
+intuitive. &nbsp;You basically tell it to run one time a day and then 
+set some advance options to tell it to run more frequently.</p>
+<p>You need to set a few other things as well, here's what my tabs look like (I am using a fake key for an example below):</p>
+<p></p><div class="dp-highlighter nogutter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>Task&nbsp;Tab:&nbsp;&nbsp;</span></span></li><li class=""><span>Run:&nbsp;C:\Ruby\bin\scout.bat&nbsp;4ahlfakjs23agkjh1234af&nbsp;&nbsp;</span></li><li class="alt"><span>Start&nbsp;In:&nbsp;C:\Ruby\bin&nbsp;&nbsp;</span></li><li class=""><span>Run&nbsp;As:&nbsp;(make&nbsp;sure&nbsp;to&nbsp;set&nbsp;<span class="keyword">this</span><span>&nbsp;to&nbsp;someone&nbsp;who&nbsp;has&nbsp;rights&nbsp;to&nbsp;run&nbsp;the&nbsp;code&nbsp;and&nbsp;enter&nbsp;the&nbsp;right&nbsp;password&nbsp;&nbsp;</span></span></li><li class="alt"><span>Enabled:&nbsp;Check&nbsp;&nbsp;</span></li><li class=""><span>Schedule&nbsp;Tab:&nbsp;&nbsp;</span></li><li class="alt"><span>Schedule&nbsp;Task:&nbsp;Daily&nbsp;&nbsp;</span></li><li class=""><span>Start&nbsp;Time:&nbsp;(now&nbsp;or&nbsp;whenever&nbsp;you&nbsp;want)&nbsp;&nbsp;</span></li><li class="alt"><span>Schedule&nbsp;Task&nbsp;Daily:&nbsp;Every:&nbsp;1&nbsp;day(s)&nbsp;&nbsp;</span></li><li class=""><span>(Hit&nbsp;Advanced&nbsp;Button)&nbsp;&nbsp;</span></li><li class="alt"><span>Check&nbsp;the&nbsp;Repeat&nbsp;Task&nbsp;box&nbsp;&nbsp;</span></li><li class=""><span>Every:&nbsp;2&nbsp;minutes&nbsp;&nbsp;</span></li><li class="alt"><span>Unit:&nbsp;Duration&nbsp;23&nbsp;Hours&nbsp;59&nbsp;minutes&nbsp;&nbsp;</span></li><li class=""><span>Settings:&nbsp;&nbsp;</span></li><li class="alt"><span>Stop&nbsp;the&nbsp;Task&nbsp;<span class="keyword">if</span><span>&nbsp;it&nbsp;runs&nbsp;</span><span class="keyword">for</span><span>&nbsp;1&nbsp;hour(s)&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" language="code"> Task Tab:
+ Run: C:\Ruby\bin\scout.bat 4ahlfakjs23agkjh1234af
+ Start In: C:\Ruby\bin
+ Run As: (make sure to set this to someone who has rights to run the code and enter the right password
+ Enabled: Check
+ Schedule Tab:
+ Schedule Task: Daily
+ Start Time: (now or whenever you want)
+ Schedule Task Daily: Every: 1 day(s)
+ (Hit Advanced Button)
+ Check the Repeat Task box
+ Every: 2 minutes
+ Unit: Duration 23 Hours 59 minutes
+ Settings:
+ Stop the Task if it runs for 1 hour(s)
+ </pre><p></p>
+<p>Now the Scout Agent should run every two minutes. &nbsp;Note, it will
+ fail because right out of the gate, it is going to try and do some 
+Linux-style monitoring.</p>
+<p><em>Configure the web application:</em></p>
+<p>Log into scoutapp.com with your account and find your new server.</p>
+<p>Delete all of the existing/default plugins for this server. &nbsp;None of them will work.</p>
+<p>Scout has a really cool and simple approach to adding your own 
+plugins by pointing to scripts that are posted online (such as at 
+github). &nbsp;I have the ones that I wrote hosted <a href="http://github.com/djohnsonjr/scout-plugins" target="_blank">here</a>.&nbsp;&nbsp;You
+ need to use the "raw" format for Scout. &nbsp;The README file at the 
+bottom of the github page will give more information about each script. 
+&nbsp;Right now, I have scripts for CPU load, disk space, memory used, 
+checking the file count in a directory, running a bat file, and checking
+ to see if a given process/service is running or not.</p>
+<p>Now we are ready to add our custom Windows monitoring plugins. 
+&nbsp;While looking at the server in Scout, hit "Add Plugin" and then 
+use the "Create a plugin" link. &nbsp;This will take you to a "Add a 
+Plugin Manually" page. &nbsp;This page will prompt you for a name and 
+the URL to the plugin code. &nbsp;Note, you can also copy/paste code 
+directly into Scout, but I think that is a much harder way to manage the
+ code.</p>
+<p>For the first example, you can name this first plugin "Windows CPU Load" and for the URL to the code, enter <a href="http://github.com/djohnsonjr/scout-plugins/raw/master/windows_cpu_load/windows_cpu_load.rb">http://github.com/djohnsonjr/scout-plugins/raw/master/windows_cpu_load/window...</a>
+ and then hit "Create Plugin". &nbsp;Remember to use the "raw" format. 
+&nbsp;If you are navigating around Github, you will see links for "raw" 
+and you can see in the URL that I provided that it contains the word 
+"raw".</p>
+<p>There is no additional configuration required to get it working! 
+&nbsp;Since we are reporting "% used" you can edit the "label" under the
+ plugin's settings to have a "%" in the "units" field, but that's not 
+required.</p>
+<p>Some of the plugins that I have done do require additional 
+configuration. &nbsp;For example, if you wanted to use the plugin that 
+counts files in directory, you have to set the directory as a 
+configuration option when setup the plugin. &nbsp;You would create the 
+plugin the same as the CPU monitor. &nbsp;This time name it "Input File 
+Count" and give a URL of <a href="http://github.com/djohnsonjr/scout-plugins/raw/master/windows_check_for_files/windows_check_for_files.rb">http://github.com/djohnsonjr/scout-plugins/raw/master/windows_check_for_files...</a></p>
+<p>Once the plugin is added, the setting page for that plugin should 
+have an additional option called "Directory" that wasn't on the last 
+plugin. &nbsp;In this directory box, put the full path of the Windows 
+directory that you want to monitor, for example C:\input_files and 
+update the settings. &nbsp;Here, you may want to adjust the label 
+settings and put "files" for the units. &nbsp;This will make your 
+dashboard say, "10 files" instead of just 10.</p>
+<p>If you have two directories that you want to monitor, you simply add another plugin, and follow the same steps.</p>
+<p>Finally, you can now set alerts and build charts against any of these monitors as you see fit.</p>
+<p>&nbsp;</p>
+              </div>
+            </div>
+            <footer>
+            
+                
+                    <section class="author locations" id="statistics">
+                        
+                          <time pubdate="pubdate" datetime="2011-01-06"><a href="http://cookieoverflow.com/using-scout-to-monitor-windows">Posted over 2 years ago</a></time>
+                        
+    
+                        
+              
+            
+                        
+              
+                
+              
+            
+                      
+                          |
+                        Viewed <div class="posterous_ojs" data-posterous-view-count="true" data-posterous-post-id="38767381"></div> times
+                    
+                    </section>
+                
+                    
+                
+                  
+                        <section class="tags">
+                            Filed under:
+                            
+              
+                
+                                <a href="http://cookieoverflow.com/tag/monitor" rel="tag">monitor</a>&nbsp;
+                            
+              
+                
+                                <a href="http://cookieoverflow.com/tag/scout" rel="tag">scout</a>&nbsp;
+                            
+              
+            
+                        </section>
+                    
+                
+              
+                
+            
+                
+            
+          
+            
+                
+                
+                    
+              <aside class="p_responses light">
+                
+            
+          
+            
+              <nav class="p_response_widget">
+<ul class="clearfix">
+<li class="p_responses_link active"><a href="http://cookieoverflow.com/responses/recent?post_id=38767381" data-posterous-response-count="38767381" data-response-post-id="38767381" title="View responses to this post"><strong>4</strong> responses</a></li>
+<li class="p_like_link"><a href="http://cookieoverflow.com/likes/create?like_type=post&amp;post_id=38767381" class="like_post" data-like-url="/likes/create?like_type=post&amp;post_id=38767381" data-posterous-like-button-for-post-id="38767381" data-posterous-like-text="Like this post" data-posterous-like="true" data-posterous-unlike-text="Unlike this post" data-unlike-url="/likes/delete?like_type=post&amp;post_id=38767381" rel="nofollow" title="Like this post"><div class="p_like_icon"></div><div class="p_unlike_icon" style="display:none"></div><span>Like</span></a></li>
+<li class="p_comment_link"><a href="http://cookieoverflow.com/responses/recent?post_id=38767381" data-comment-post-id="38767381" title="Comment on this post"><div>Comment</div></a></li>
+</ul>
+</nav>
+
+          		<div data-posterous-responses-for-post-id="38767381">
+<div class="p_response_container">
+<a name="comment"></a>
+<div class="p_responses_list clearfix" data-posterous-responses-container="">
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1294421896">about 2 years ago</time>
+<a href="https://scoutapp.com/">Derek Haynes</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<img alt="" src="using-scout-to-monitor-windows_files/missing-user-35.png">
+</div>
+<div class="p_comment_text">
+Very smart Don!
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1303015211">almost 2 years ago</time>
+ken everett responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<img alt="" src="using-scout-to-monitor-windows_files/missing-user-35.png">
+</div>
+<div class="p_comment_text">
+Very useful post!   <p>I'm also managing an environment, primarily 
+Linux.  But with an MSSQL db on windows7.  Your instructions are spot 
+on.   Saved me a ton of time.     I'm finding that your original and 
+current version of memory plugin is useful:  available + % used</p>
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_comment p_owner p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1303475128">almost 2 years ago</time>
+<a href="http://posterous.com/users/4bmLLqSj7e6Z">Don Johnson</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<a href="http://posterous.com/users/4bmLLqSj7e6Z"><img alt="Don Johnson" src="using-scout-to-monitor-windows_files/photo_large_high_thumb.jpg"></a>
+</div>
+<div class="p_comment_text">
+Ken,  so happy to help!
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1306821575">almost 2 years ago</time>
+<a href="http://posterous.com/users/hcGh17SPwX2Km">johnrockfellerz</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<a href="http://posterous.com/users/hcGh17SPwX2Km"><img alt="johnrockfellerz" src="using-scout-to-monitor-windows_files/missing-user-75.png"></a>
+</div>
+<div class="p_comment_text">
+ADAudit Plus is a valuable security tool that will help you be compliant
+ with all the IT regulatory acts. With this tool, you can monitor user 
+activity such as logon, file access, etc. A configurable alert system 
+warns you of potential threats.<p><a href="http://www.manageengine.com/products/active-directory-audit/" rel="nofollow">http://www.manageengine.com/products/active-directory-audit/</a></p>
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+</div>
+</div>
+</div>
+
+          		<div class="posterous_ojs" data-posterous-new-comment-form="true"></div>
+            
+          
+              </aside> 
+        		
+                
+                
+                
+            </footer>
+          </article>
+        
+      </div>
+        <footer id="pagination">
+          
+        </footer>
+    </div><!-- /#post_column -->
+
+    <aside id="sidebar">
+    
+        <div class="column">
+            <section id="profile">
+              <h1>
+                <a href="http://posterous.com/users/4bmLLqSj7e6Z" title="Don Johnson's profile">
+                  <img class="profile_image" src="using-scout-to-monitor-windows_files/photo_large_high.jpg" alt="Don Johnson">
+                </a>
+              </h1>
+              <a href="http://posterous.com/users/4bmLLqSj7e6Z" class="profile-link"><strong>Don Johnson</strong></a>
+              <div class="profile">
+			  	<p>You can find out more about me here: <a href="http://about.me/donjohnson">http://about.me/donjohnson</a></p>
+			  </div>
+              <div class="external"></div>
+            </section>
+    
+            
+              
+                
+              <section id="search">
+                <form class="search">
+                  <input name="sort" value="" type="hidden">
+                  <input name="search" class="text" id="searchbox" type="text">
+                  <input class="submit" id="searchbox_button" value="Search" style="display:none" type="submit">
+                </form>
+                <div class="posterous_ojs" data-posterous-search-box="true" data-posterous-search-button-id="searchbox_button" data-posterous-search-box-id="searchbox"></div>
+              </section>
+            
+              
+          
+                
+                
+        </div>
+        <div class="column">
+
+          
+            <section id="rss">
+              <a href="http://cookieoverflow.com/rss.xml" rel="alternate" type="application/rss+xml">Subscribe via RSS</a>
+            </section>
+            
+            
+            
+            
+        </div>
+            
+        
+        				
+                  
+            <div class="column" style="padding-right:0;">
+              <section id="tags">
+                <h1>Tags</h1>
+                <ul>
+                  
+        				
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/rails">rails</a> <span>(5)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/console">console</a> <span>(2)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/meta">meta</a> <span>(2)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/errors">errors</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/monitor">monitor</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/offtopic">off topic</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/performance">performance</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/scout">scout</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/testing">testing</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+                  
+                    
+              
+
+            
+                    
+                
+                  
+                      <li><a href="http://cookieoverflow.com/tag/windows">windows</a> <span>(1)</span></li>
+                    
+                
+              
+                    
+              
+            
+                  
+                
+              
+                
+
+              
+                </ul>
+              </section>
+            </div>
+        
+                
+              
+        
+        <div class="clear"></div>
+    </aside>
+
+</div><!-- /.container -->
+
+
+
+
+  
+      <script type="text/javascript">
+    	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    	</script><script src="using-scout-to-monitor-windows_files/ga.js" type="text/javascript"></script>
+    	<script type="text/javascript">
+    	var pageTracker = _gat._getTracker("UA-4054156-1");
+    	pageTracker._setDomainName("none");
+    	pageTracker._setAllowLinker(true);
+    	pageTracker._setAllowHash(false);
+    	pageTracker._initData();
+    	pageTracker._trackPageview();
+    	</script>
+    
+  
+  <!-- Quantcast Tag --> 
+  <script type="text/javascript">
+    var _qevents = _qevents || [];
+    _qevents.push( { qacct:"p-16ewveTurfCCM"} );
+  </script>
+  <script type="text/javascript" src="using-scout-to-monitor-windows_files/quant.js" async=""></script>
+  <noscript>
+  <div style="display: none;"><img src="https://pixel.quantserve.com/pixel/p-16ewveTurfCCM.gif" height="1" width="1" alt="Quantcast"/></div>
+  </noscript>
+  <!-- End Quantcast tag -->
+
+
+	<script type="text/javascript">
+		try {
+			var pageTrackerUser = _gat._getTracker("UA-21032640-1");
+			pageTrackerUser._trackPageview();
+		} catch (err) {}
+	</script>
+
+
+<script src="using-scout-to-monitor-windows_files/view.js" type="text/javascript"></script>
+<script src="using-scout-to-monitor-windows_files/sites_views.js" type="text/javascript"></script>
+<script src="using-scout-to-monitor-windows_files/sites.js" type="text/javascript"></script>
+<script type="text/javascript" src="using-scout-to-monitor-windows_files/widgets.js" defer="defer"></script>
+<script type="text/javascript" src="using-scout-to-monitor-windows_files/js"></script><script src="using-scout-to-monitor-windows_files/main.js" type="text/javascript"></script>
+
+<script>
+	var fbid_site_owner = 1;
+</script>
+
+
+
+<div class="posterous_ojs" data-posterous-twitter-oauth="true" data-posterous-post-ids="%7B%2238767381%22%3A%22http%3A%2F%2Fcookieoverflow.com%2Fusing-scout-to-monitor-windows%22%7D" data-posterous-redirect-url="http://posterous.com/oauth/init_oauth_and_redirect/?ssod=cookieoverflow.com&amp;oauth_provider_type="></div>
+<script src="using-scout-to-monitor-windows_files/recaptcha_ajax.js" type="text/javascript"></script>
+<iframe src="using-scout-to-monitor-windows_files/analytics_tracker.html" style="height: 1px; width: 1px; display: none;"></iframe>
+
+      <script type="text/javascript">
+        null_fn = function () {};
+        var mpmetrics = { track_links: null_fn, track: null_fn, track_funnel: null_fn, register: null_fn, register_once: null_fn, register_funnel: null_fn };
+      </script>
+    
+​
+
+</div><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 9998; display: none;" id="modal_overlay"></div><div style="display: none;" id="modal_container_holder"><div id="modal_container"></div></div><div style="display: none;" id="modal_loading"></div></body></html>
