@@ -47,26 +47,22 @@ class WindowsLogWatcher < Scout::Plugin
       read_length = current_length - last_length
       # Check to see if this file was rotated.  This occurs when the +current_length+ is less than the
       # +last_length+.  Don't return a count if this occurs.
-      if read_length >= 0
+      if read_length > 0
 
       # The shell commands that are available to tail a file by X number of bytes in UNIX don't exist
       # in Windows, or if they do they're not worth using because they're DOS-based and DOS is icky.  Use
-      # the IO class instead.  Hopefully this action doesn't become a huge memory hog?
-        IO.read(@log_file_path, last_length).split("\r\n").each do |line|
+      # the IO class instead.  Hopefully IO.read doesn't become a huge memory hog.
+        IO.read(@log_file_path, current_length, last_length).split("\r\n").each do |line|
           if line.match(@term)
             matches += 1
           end
         end
-        elapsed_seconds = Time.now - @last_run
-
-        # elapsed_seconds / 60 should be minutes in floating point
-        matches = (matches / (elapsed_seconds / 60)).to_i
       else
-        matches = nil
+        matches = 0
       end
     end
 
-    counter(:log_matches, matches, :per => :minute)
+    counter(:log_matches, matches, :per => :minute, :round => true)
     remember(:last_bytes, current_length)
   end
 end
