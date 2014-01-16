@@ -38,6 +38,7 @@ OPTIONS = <<-EOS
   def build_report
     return if init()
 
+    failures = String.new
     last_log_size = memory(:commvault_log_size) || 0
     current_length = `wc -c #{@log_file_path}`.split(' ')[0].to_i
     # don't run it the first time
