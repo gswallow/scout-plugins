@@ -78,12 +78,17 @@ class LongRunningProcess < Scout::Plugin
   def build_report
     return if init()
 
+    @long_running_procs = 0
+
     procs = Sys::ProcTable.ps.select { |p| p['cmdline'] =~ /#{@process}/ }
     procs.each do |proc|
       if process_run_time(proc) > @time.to_i * 60
+        @long_running_procs += 1
         alert("#{proc.cmdline} has been running for #{process_run_time(proc) / 60} minutes")
         kill(proc) if @kill == "true"
       end
     end
   end
+
+  report(:long_running_processes => @long_running_procs)
 end
